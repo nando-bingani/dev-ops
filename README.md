@@ -1,2 +1,2 @@
 # dev-ops
-Developer Operation 
+Developer Operations
