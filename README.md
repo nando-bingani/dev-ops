@@ -1,7 +1,7 @@
 # dev-ops
 Developer-Operations
 dev-ops/
-├── api/
+├── app/
 │   └── main.py
 ├── requirements.txt
 └── Dockerfile
