@@ -1,4 +1,4 @@
-name: Deploy FastAPI to Server
+name: Deploy FastAPI to Server.
 
 on:
   push:
