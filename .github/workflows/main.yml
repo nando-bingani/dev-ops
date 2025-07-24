@@ -33,5 +33,5 @@ jobs:
           port: 22
           script: |
             cd ~/dev-ops
-            docker-compose down || true
-            docker-compose up --build -d
+            docker compose down || true
+            docker compose up --build -d
