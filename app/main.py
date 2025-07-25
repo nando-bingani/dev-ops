@@ -5,4 +5,4 @@ app = FastAPI()
 
 @app.get("/")
 async def root():
-    return {"message": "Hello World from self-hosted ctions!"}
+    return {"message": "Hello World from self-hosted actions!"}

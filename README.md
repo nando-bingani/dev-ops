@@ -5,3 +5,4 @@ dev-ops/
 │   └── main.py
 ├── requirements.txt
 └── Dockerfile
+└── docker-compose.yml
