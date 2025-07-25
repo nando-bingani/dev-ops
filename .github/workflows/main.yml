@@ -1,4 +1,4 @@
-name: Deploy FastAPI to Server.
+name: Deploy FastAPI to Server
 
 on:
   push:
@@ -7,31 +7,18 @@ on:
 
 jobs:
   deploy:
-    name: Deploy to Server via SSH
-    runs-on: self-hosted
+    name: Deploy to Server
+    runs-on: self-hosted # This is crucial, as the runner is on your server 
 
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Copy project files to SERVER
-        uses: appleboy/scp-action@master
-        with:
-          host: ${{ secrets.SERVER_HOST }}
-          username: ${{ secrets.SERVER_USERNAME }}
-          key: ${{ secrets.SERVER_SSH_KEY }}
-          port: 22
-          source: "."
-          target: "~/dev-ops"
-
-      - name: Deploy on SERVER (build & run Docker)
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.SERVER_HOST }}
-          username: ${{ secrets.SERVER_USERNAME }}
-          key: ${{ secrets.SERVER_SSH_KEY }}
-          port: 22
-          script: |
-            cd ~/dev-ops
-            docker compose down || true
-            docker compose up --build -d
+      - name: Build and Deploy Docker Container
+        run: |
+          # The commands that were previously in the 'script' section of the ssh-action
+          # can now be run directly because the runner is on the target server.
+          # Ensure the runner's working directory is correct or cd to your project directory.
+          # The default working directory for a job is typically the cloned repository.
+          docker compose down || true
+          docker compose up --build -d
